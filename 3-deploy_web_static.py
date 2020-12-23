@@ -4,6 +4,7 @@ web servers, using the function do_deploy: """
 
 from fabric.api import *
 from os import path
+import time
 
 env.hosts = ['35.237.158.254', '35.243.174.193']
 
@@ -50,7 +51,7 @@ def do_pack():
 
 
 def deploy():
-    """This function creates a .tgz file and deploy it into the servers"""
+    """Deploys all"""
     path = do_pack()
     if path is None:
         return False
