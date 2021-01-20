@@ -20,8 +20,6 @@ class State(BaseModel, Base):
     else:
         @property
         def cities(self):
-            list_cities = []
-            for cities in models.storage.all(City).values():
-                if city.state_id == self.id:
-                    list_cities.append(cities)
-            return list_cities
+            """ Cities class """
+            return [city for city in models.storage.all(City).values()
+                    if city.state_id == self.id]
