@@ -8,8 +8,10 @@ app = Flask(__name__)
 
 @app.route('/python/', strict_slashes=False)
 @app.route('/python/<text>', strict_slashes=False)
-def hello_world(text="is cool"):
-    return 'Python {}'.format(text).replace('_', ' ')
+
+@app.route('/number/<int:n>', strict_slashes=False)
+def hello_world(n):
+    return '{:d} is a number'.format(n)
 
 
 if __name__ == "__main__":
