@@ -2,21 +2,21 @@
 """Start a flask app"""
 from flask import Flask, render_template
 from models import storage
-from models.city import City
+from models.state import State
 
 app = Flask(__name__)
 
 
 @app.route('/cities_by_states', strict_slashes=False)
-def cities_list():
-    """display cities"""
-    cities = storage.all(City)
-    return render_template("8-cities_by_states.html", cities=cities)
+def cities_by_states():
+    """states and cities lists"""
+    states = storage.all(State)
+    return render_template("8-cities_by_states.html", states=states)
 
 
 @app.teardown_appcontext
 def close_storage(exception):
-    """remove the current SQLAlchemy session"""
+    """close the current SQLAlchemy session"""
     storage.close()
 
 
